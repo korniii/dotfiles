@@ -1,0 +1,3 @@
+[submodule "fish"]
+	path = fish
+	url = git@github.com:korniii/fish.git
