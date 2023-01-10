@@ -1,6 +1,0 @@
-[submodule "fish"]
-	path = fish
-	url = git@github.com:korniii/fish.git
-[submodule "nvim"]
-	path = nvim
-	url = git@github.com:korniii/nvim.git
