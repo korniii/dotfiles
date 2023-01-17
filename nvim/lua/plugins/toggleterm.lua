@@ -3,11 +3,11 @@ return {
 	config = function()
 		require("toggleterm").setup()
 
-		local Terminal  = require('toggleterm.terminal').Terminal
+		local Terminal = require('toggleterm.terminal').Terminal
 
 		local lazygit = Terminal:new({
 			cmd = "lazygit",
-			dir = "git_dir",
+			-- dir = "git_dir", --FIXME: somehow git_dir is not recognized by toggleterm
 			direction = "float",
 			float_opts = {
 				border = "double",
