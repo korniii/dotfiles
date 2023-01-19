@@ -8,3 +8,6 @@ alias tfa="terraform apply"
 
 #nvim
 alias v="nvim"
+
+#lazygit
+alias g="lazygit"
