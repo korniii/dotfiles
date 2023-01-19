@@ -77,8 +77,10 @@ return {
 
 			lsp.configure('sumneko_lua', {
 				settings = {
-					diagnostics = {
-						globals = { 'vim' },
+					Lua = {
+						diagnostics = {
+							globals = { 'vim' },
+						},
 					},
 				},
 			})
@@ -158,6 +160,10 @@ return {
 			lsp.on_attach(on_attach)
 
 			lsp.setup()
+
+			vim.diagnostic.config({
+				virtual_text = true,
+			})
 		end
 	},
 	{
@@ -170,6 +176,12 @@ return {
 					on_attach = on_attach
 				},
 			})
+		end
+	},
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require "fidget".setup {}
 		end
 	}
 }
