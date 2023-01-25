@@ -12,6 +12,7 @@ return {
     vim.keymap.set("n", "<leader>sd", builtin.diagnostics, {})
     vim.keymap.set("n", "<leader>sb", builtin.current_buffer_fuzzy_find, {})
     vim.keymap.set("n", "<leader>sg", builtin.git_files, {})
+    vim.keymap.set("n", "<leader>ss", builtin.grep_string, {})
 
   end
 }
