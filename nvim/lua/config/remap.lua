@@ -9,6 +9,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- update buffer -> write to file if changed
+vim.keymap.set("n", "<leader><leader>", "<cmd>up<cr>")
+
 -- better navigation
 
 -- centered halfpage jumps
