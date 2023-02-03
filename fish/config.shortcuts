@@ -1,5 +1,8 @@
 #!/usr/bin/fish
 
+#util
+alias ll="ls -la"
+
 #terraform
 alias tf="terraform"
 alias tfi="terraform init"
