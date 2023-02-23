@@ -4,7 +4,6 @@ return {
 		"kyazdani42/nvim-web-devicons"
 	},
 	init = function()
-
 		require('lualine').setup({
 			options = {
 				icons_enabled = true,
@@ -45,6 +44,5 @@ return {
 			inactive_winbar = {},
 			extensions = {}
 		})
-
 	end
 }
