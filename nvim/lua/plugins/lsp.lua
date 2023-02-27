@@ -34,7 +34,6 @@ local on_attach = function(_, bufnr)
 	nmap('dn', vim.diagnostic.goto_next, '[D]iagnostic [N]ext')
 
 	nmap('<leader>f', function() vim.lsp.buf.format { async = true } end, '[F]ormat')
-
 end
 
 return {
@@ -62,20 +61,23 @@ return {
 			"onsails/lspkind-nvim",
 		},
 		config = function()
-
 			local lsp = require('lsp-zero')
 
 			lsp.preset('recommended')
 
 			lsp.ensure_installed({
 				"tsserver",
-				"sumneko_lua",
+				"lua_ls",
 				"gopls",
 				"rust_analyzer",
 				"marksman"
 			})
 
-			lsp.configure('sumneko_lua', {
+			-- don't initialize this language server
+			-- we will use rust-tools to setup rust_analyzer
+			lsp.skip_server_setup({ 'rust_analyzer' })
+
+			lsp.configure('lua_ls', {
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -90,7 +92,7 @@ return {
 
 			-- Previous snippet region
 			vim.keymap.set({ "i", "s" }, "<C-k>", function()
-				if ls.jumpable(-1) then ls.jump(-1) end
+				if ls.jumpable( -1) then ls.jump( -1) end
 			end, { silent = true })
 
 			-- Next snippet region
@@ -116,11 +118,10 @@ return {
 						require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 					end,
 				},
-
 				mapping = {
 					["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
 					["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-					["<C-d>"] = cmp.mapping.scroll_docs(-4),
+					["<C-d>"] = cmp.mapping.scroll_docs( -4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<c-y>"] = cmp.mapping(
@@ -131,15 +132,13 @@ return {
 						{ "i", "c" }
 					),
 				},
-
 				sources = {
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "luasnip" },
-					{ name = "buffer", keyword_length = 5 },
+					{ name = "buffer",  keyword_length = 5 },
 				},
-
 				formatting = {
 					format = lspkind.cmp_format {
 						with_text = true,
