@@ -4,6 +4,7 @@ if test -f ~/.config/fish/proxy.fish
     . ~/.config/fish/proxy.fish
 end
 
+bind \cf "tmux-sessionizer"
 
 # if status is-interactive
     # Commands to run in interactive sessions can go here
