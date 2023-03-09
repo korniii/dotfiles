@@ -13,17 +13,32 @@ return {
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
 		config = true,
 		keys = {
-			{ "<leader>gd", "<cmd>DiffviewOpen<cr>",  desc = "[G]it [D]iffView" },
-			{ "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "[G]it [C]lose DiffView" },
-			{ "<leader>gh", function()
-				vim.ui.input({ prompt = "Git Pickaxe (empty = full history)" }, function(query)
-					if not query then return end
-					if query ~= "" then query = string.format(" -G'%s'", query) end
-					vim.cmd("DiffviewFileHistory %" .. query)
-					vim.cmd.wincmd("w") -- go directly to file window
-					vim.cmd.wincmd("|") -- maximize
-				end)
-			end, { desc = "[G]it File [H]istory" } }
+			-- { "<leader>gd", "<cmd>DiffviewOpen<cr>",  desc = "[G]it [D]iffView" },
+			-- { "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "[G]it [C]lose DiffView" },
+			{
+				'<leader>gd',
+				function()
+					if next(require("diffview.lib").views) == nil then
+						vim.cmd('DiffviewOpen')
+					else
+						vim.cmd('DiffviewClose')
+					end
+				end,
+				desc = "[G]it [D]iffView"
+			},
+			{
+				"<leader>gh",
+				function()
+					vim.ui.input({ prompt = "Git Pickaxe (empty = full history)" }, function(query)
+						if not query then return end
+						if query ~= "" then query = string.format(" -G'%s'", query) end
+						vim.cmd("DiffviewFileHistory %" .. query)
+						vim.cmd.wincmd("w") -- go directly to file window
+						vim.cmd.wincmd("|") -- maximize
+					end)
+				end,
+				desc = "[G]it File [H]istory"
+			}
 		},
 	},
 	{
