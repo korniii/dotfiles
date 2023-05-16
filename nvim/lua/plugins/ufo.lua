@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		'kevinhwang91/promise-async'
 	},
+	event = "BufReadPost",
 	opts = {
 		open_fold_hl_timeout = 0,
 		fold_virt_text_handler = function(text, lnum, endLnum, width)
@@ -16,6 +17,8 @@ return {
 
 			suffix = suffix .. (' '):rep(width - cur_width - vim.fn.strdisplaywidth(lines) - 3)
 
+			table.insert(text, { suffix, 'Comment' })
+			table.insert(text, { lines, 'Todo' })
 			return text
 		end,
 		close_fold_kinds = { 'imports', 'comment' },
