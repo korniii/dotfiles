@@ -11,3 +11,5 @@
 #### rest.nvim
 - [tidy](https://github.com/htacg/tidy-html5) - The granddaddy of HTML tools, with support for modern standards
 - [jq](https://github.com/stedolan/jq) - Command-line JSON processor
+#### peek.nvim
+- [deno](https://deno.com/) - A modern runtime for JavaScript and TypeScript
