@@ -165,9 +165,9 @@ return {
 
 			lsp.setup()
 
-			vim.diagnostic.config({
-				virtual_text = true,
-			})
+			-- vim.diagnostic.config({
+			-- 	virtual_text = true,
+			-- })
 		end
 	},
 	{
@@ -180,6 +180,12 @@ return {
 					on_attach = on_attach
 				},
 			})
+		end
+	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
 		end
 	},
 	{
