@@ -4,9 +4,11 @@ local on_attach = function(_, bufnr)
 		if desc then
 			desc = 'LSP: ' .. desc
 		end
-
 		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
 	end
+
+	-- TODO: fix - activate experimental support for inlay hints gcc
+	vim.lsp.buf.inlay_hint(bufnr, true)
 
 	nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 	nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -83,6 +85,9 @@ return {
 						diagnostics = {
 							globals = { 'vim' },
 						},
+						hint = {
+							enable = true,
+						}
 					},
 				},
 			})
@@ -92,7 +97,7 @@ return {
 
 			-- Previous snippet region
 			vim.keymap.set({ "i", "s" }, "<C-k>", function()
-				if ls.jumpable( -1) then ls.jump( -1) end
+				if ls.jumpable(-1) then ls.jump(-1) end
 			end, { silent = true })
 
 			-- Next snippet region
@@ -121,7 +126,7 @@ return {
 				mapping = {
 					["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
 					["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-					["<C-d>"] = cmp.mapping.scroll_docs( -4),
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<c-y>"] = cmp.mapping(
@@ -137,7 +142,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "luasnip" },
-					{ name = "buffer",  keyword_length = 5 },
+					{ name = "buffer", keyword_length = 5 },
 				},
 				formatting = {
 					format = lspkind.cmp_format {
