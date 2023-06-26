@@ -4,5 +4,5 @@ return {
 		width = 150
 	},
 	config = true,
-	keys = {{"<leader>z", "<cmd>NoNeckPain<cr>"}}
+	keys = {{"<leader>z", "<cmd>NoNeckPain<cr>", desc="[Z]en"}}
 }

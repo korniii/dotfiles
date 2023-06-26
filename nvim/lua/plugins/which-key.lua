@@ -10,7 +10,9 @@ return {
       wk.register({
         mode = { "n", "v" },
         ["<leader>g"] = { name = "+git" },
-        ["<leader>s"] = { name = "+search" },
+        ["<leader>o"] = { name = "+open" },
+				["<leader>s"] = { name = "+search" },
+        ["<leader>x"] = { name = "+trouble" },
       })
     end,
 }
