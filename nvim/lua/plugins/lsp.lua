@@ -8,7 +8,7 @@ local on_attach = function(_, bufnr)
 	end
 
 	-- TODO: fix - activate experimental support for inlay hints gcc
-	vim.lsp.buf.inlay_hint(bufnr, true)
+	-- vim.lsp.buf.inlay_hint(bufnr, true)
 
 	nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 	nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
