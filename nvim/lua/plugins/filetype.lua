@@ -3,6 +3,7 @@ return {
 	opts = {
 		overrides = {
 			extensions = {
+				sh = "bash",
 				tf = "terraform",
 				tfvars = "terraform",
 				tfstate = "json",
