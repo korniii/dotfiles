@@ -149,7 +149,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "luasnip" },
-					{ name = "buffer", keyword_length = 5 },
+					{ name = "buffer",  keyword_length = 5 },
 				},
 				formatting = {
 					format = lspkind.cmp_format {
@@ -197,6 +197,7 @@ return {
 	},
 	{
 		"j-hui/fidget.nvim",
+		tag = "legacy",
 		config = function()
 			require "fidget".setup {}
 		end

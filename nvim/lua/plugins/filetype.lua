@@ -8,6 +8,14 @@ return {
 				tfvars = "terraform",
 				tfstate = "json",
 			},
+			complex = {
+				[".*/templates/.*%.yaml"] = "helm",
+				[".*/templates/.*%.tpl"] = "helm",
+				["helmfile.yaml"] = "helm",
+			},
+			shebang = {
+				dash = "sh",
+			},
 		},
 		config = true
 	}
