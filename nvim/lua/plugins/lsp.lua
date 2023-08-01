@@ -184,7 +184,14 @@ return {
 
 			rt.setup({
 				server = {
-					on_attach = on_attach
+					on_attach = on_attach,
+					settings = {
+						["rust-analyzer"] = {
+							checkOnSave = {
+								command = "clippy"
+							},
+						}
+					}
 				},
 			})
 		end
