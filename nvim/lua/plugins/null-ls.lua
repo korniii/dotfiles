@@ -12,9 +12,19 @@ return {
 				-- Opt to list sources here, when available in mason.
 			},
 			automatic_installation = false,
-			handlers = {},
+			handlers = {
+				prettierd = function()
+					local null_ls = require "null-ls"
+					null_ls.register(
+						null_ls.builtins.formatting.prettierd.with {
+							extra_filetypes = { "astro" }
+						}
+					)
+				end,
+			},
 		})
 		require("null-ls").setup({
+			log_level = "warn",
 			sources = {
 				-- Anything not supported by mason.
 			}
