@@ -8,7 +8,8 @@ fish_add_path ~/.config/scripts
 
 bind \cf "tmux-sessionizer"
 
-# if status is-interactive
+if status is-interactive
     # Commands to run in interactive sessions can go here
-# end
+    atuin init fish | source
+end
 
