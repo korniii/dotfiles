@@ -79,5 +79,19 @@ return {
 				'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
 				{ silent = true, desc = "[G]it [O]pen in Browser" })
 		end
+	},
+	{
+		"FabijanZulj/blame.nvim",
+		event = "VeryLazy",
+		keys = {
+			{ "<leader>gb", "<cmd>ToggleBlame virtual<cr>", desc = "[G]it [B]lame" },
+		},
+		opts = {
+			-- width - number - fixed width of the window (default: width of longest blame line + 8)
+			-- date_format - string - Pattern for the date (default: "%Y/%m/%d %H:%M")
+			-- virtual_style - "right_align" or "float" - Float moves the virtual text close to the content of the file. (default : "right_align")
+			date_format = "%Y-%m-%d",
+			virtual_style = "float"
+		}
 	}
 }
