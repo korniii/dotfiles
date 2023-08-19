@@ -149,6 +149,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "luasnip" },
+					{ name = "crates" },
 					{ name = "buffer",  keyword_length = 5 },
 				},
 				formatting = {
@@ -162,6 +163,7 @@ return {
 							luasnip = "[snip]",
 							gh_issues = "[issues]",
 							tn = "[TabNine]",
+							crates = "[crates]",
 						},
 					},
 				},
@@ -195,6 +197,45 @@ return {
 				},
 			})
 		end
+	},
+	{
+		"saecki/crates.nvim",
+		enabled = true,
+		dependencies = { "nvim-lua/plenary.nvim" },
+		event = { "BufRead", "BufReadPre", "BufNewFile" },
+		ft = { "rust", "toml" },
+		lazy = true,
+		config = function()
+			require("crates").setup {
+				null_ls = {
+					enabled = true,
+					name = "crates.nvim",
+				},
+				popup = {
+					autofocus = true,
+					border = "rounded",
+				},
+			}
+
+			require("which-key").register({
+				C = {
+					name = "+Rust Crates",
+					o = { "<cmd>lua require('crates').show_popup()<CR>", "Show popup" },
+					r = { "<cmd>lua require('crates').reload()<CR>", "Reload" },
+					v = { "<cmd>lua require('crates').show_versions_popup()<CR>", "Show Versions" },
+					f = { "<cmd>lua require('crates').show_features_popup()<CR>", "Show Features" },
+					d = { "<cmd>lua require('crates').show_dependencies_popup()<CR>", "Show Dependencies Popup" },
+					u = { "<cmd>lua require('crates').update_crate()<CR>", "Update Crate" },
+					a = { "<cmd>lua require('crates').update_all_crates()<CR>", "Update All Crates" },
+					U = { "<cmd>lua require('crates').upgrade_crate<CR>", "Upgrade Crate" },
+					A = { "<cmd>lua require('crates').upgrade_all_crates(true)<CR>", "Upgrade All Crates" },
+					H = { "<cmd>lua require('crates').open_homepage()<CR>", "Open Homepage" },
+					R = { "<cmd>lua require('crates').open_repository()<CR>", "Open Repository" },
+					D = { "<cmd>lua require('crates').open_documentation()<CR>", "Open Documentation" },
+					C = { "<cmd>lua require('crates').open_crates_io()<CR>", "Open Crate.io" },
+				}
+			}, { prefix = "<leader>" })
+		end,
 	},
 	-- {
 	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",

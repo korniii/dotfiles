@@ -12,9 +12,11 @@ return {
 		})
 
 		require("which-key").register({
-			name = "Harpoon", -- optional group name
-			ha = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "[H]arpoon [A]dd mark" },
-			hm = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "[H]arpoon [M]enu" },
+			h = {
+				name = "+harpoon", -- optional group name
+				a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "[H]arpoon [A]dd mark" },
+				m = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "[H]arpoon [M]enu" },
+			},
 			j = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "Navigate to file 1" },
 			k = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "Navigate to file 2" },
 			l = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "Navigate to file 3" },
