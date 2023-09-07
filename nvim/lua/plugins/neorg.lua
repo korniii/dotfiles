@@ -28,7 +28,8 @@ return {
 						workspace = "notes",
 						folder_name = "journal",
 					}
-				}
+				},
+				["core.integrations.telescope"] = {},
 			},
 		}
 	end,
