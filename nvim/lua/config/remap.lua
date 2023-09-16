@@ -13,6 +13,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader><leader>", "<cmd>up<cr>")
 
 -- better navigation
+-- navigate soft wraps
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
 
 -- centered halfpage jumps
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
