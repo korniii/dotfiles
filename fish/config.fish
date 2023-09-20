@@ -1,5 +1,3 @@
-. ~/.config/fish/config.shortcuts
-
 if test -f ~/.config/fish/proxy.fish
     . ~/.config/fish/proxy.fish
 end
@@ -13,3 +11,26 @@ if status is-interactive
     atuin init fish | source
 end
 
+abbr -a ll "ls -la"
+abbr v "nvim"
+abbr g "lazygit"
+
+abbr tf "terraform"
+abbr tfi "terraform init"
+abbr tfp "terraform plan"
+abbr tfa "terraform apply"
+
+if type -q exa
+	abbr -a l "exa"
+	abbr -a ls "exa"
+	abbr -a ll "exa -l"
+	abbr -a lll "exa -la"
+else 
+	abbr -a l "ls"
+	abbr -a ll "ls -l"
+	abbr -a lll "ls -la"
+end
+
+if type -q bat
+	abbr -a cat "bat"
+end
