@@ -7,6 +7,8 @@ return {
 	},
 	config = function()
 		require("neorg").setup {
+			vim.keymap.set("n", "<leader>sn", "<cmd>Telescope neorg find_norg_files<cr>", { desc = "[S]earch [N]eorg" }),
+			vim.keymap.set("n", "<leader>on", "<cmd>Neorg index<cr>", { desc = "[O]pen [N]eorg" }),
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
 				["core.keybinds"] = {
