@@ -14,6 +14,7 @@ end
 abbr -a ll "ls -la"
 abbr v "nvim"
 abbr g "lazygit"
+abbr k "k9s"
 
 abbr tf "terraform"
 abbr tfi "terraform init"
