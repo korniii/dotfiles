@@ -9,6 +9,7 @@ bind \cf "tmux-sessionizer"
 if status is-interactive
     # Commands to run in interactive sessions can go here
     atuin init fish | source
+    starship init fish | source
 end
 
 abbr -a ll "ls -la"
@@ -21,11 +22,11 @@ abbr tfi "terraform init"
 abbr tfp "terraform plan"
 abbr tfa "terraform apply"
 
-if type -q exa
-	abbr -a l "exa"
-	abbr -a ls "exa"
-	abbr -a ll "exa -l"
-	abbr -a lll "exa -la"
+if type -q eza
+	abbr -a l "eza"
+	abbr -a ls "eza"
+	abbr -a ll "eza -l"
+	abbr -a lll "eza -la"
 else 
 	abbr -a l "ls"
 	abbr -a ll "ls -l"
