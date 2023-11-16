@@ -27,6 +27,11 @@ staged = '[++\($count\)](green)'
 renamed = '👅'
 deleted = '🗑'
 
+[golang]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0)]($style)'
+
 [kubernetes]
 symbol = '☸'
 disabled = false
