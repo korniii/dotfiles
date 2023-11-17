@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
