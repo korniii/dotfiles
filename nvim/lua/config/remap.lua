@@ -10,7 +10,7 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- update buffer -> write to file if changed
-vim.keymap.set("n", "<leader><leader>", "<cmd>up<cr>")
+vim.keymap.set("n", "<leader><leader>", "<cmd>up<cr>", { desc = "Save Buffer" })
 
 -- better navigation
 -- navigate soft wraps
@@ -30,6 +30,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 -- move lines/blocks in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "<leader>=", "gg=G``", { desc = "Reindent File" })
 
 -- open tmux-sessionizer in nvim
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
