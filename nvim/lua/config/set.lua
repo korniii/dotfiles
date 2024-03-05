@@ -19,6 +19,9 @@ vim.opt.shiftwidth = 2
 vim.bo.expandtab = true
 vim.opt.tabstop = 2
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
