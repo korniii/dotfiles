@@ -48,7 +48,9 @@ return {
         table.insert(newVirtText, { suffix, "MoreMsg" })
         return newVirtText
       end,
-      close_fold_kinds = { "imports", "comment" },
+      close_fold_kinds_for_ft = {
+        default = { "imports", "comment" },
+      },
       preview = {
         win_config = {
           border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
