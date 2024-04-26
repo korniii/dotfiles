@@ -12,9 +12,11 @@ return {
     { "<leader>fo", "<cmd>ObsidianQuickSwitch<cr>", desc = "[O]bsidian [F]ind File" },
     { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "[O]bsidian [O]pen" },
     { "<leader>ob", "<Cmd>ObsidianBacklinks<CR>", desc = "[O]bsidian [B]acklinks" },
-    { "<leader>od", "<Cmd>ObsidianToday<CR>", desc = "[O]bsidian [T]odays Note" },
     { "<leader>on", ":ObsidianNew ", desc = "[O]bsidian [N]ew Note" },
+    { "<leader>od", "<Cmd>ObsidianToday<CR>", desc = "[O]bsidian [D]aily Note" },
+    { "<leader>ot", "<Cmd>ObsidianTomorrow<CR>", desc = "[O]bsidian [T]omorrows Note" },
     { "<leader>oy", "<Cmd>ObsidianYesterday<CR>", desc = "[O]bsidian [Y]esterdays Note" },
+    { "<leader>or", "<Cmd>ObsidianRename<CR>", desc = "[O]bsidian [R]ename Note" },
   },
   opts = {
     dir = "~/notes/",
