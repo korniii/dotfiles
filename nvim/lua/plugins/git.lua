@@ -96,14 +96,14 @@ return {
     "FabijanZulj/blame.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>gb", "<cmd>ToggleBlame virtual<cr>", desc = "[G]it [B]lame" },
+      { "<leader>gb", "<cmd>BlameToggle virtual<cr>", desc = "[G]it [B]lame" },
     },
     opts = {
       -- width - number - fixed width of the window (default: width of longest blame line + 8)
       -- date_format - string - Pattern for the date (default: "%Y/%m/%d %H:%M")
       -- virtual_style - "right_align" or "float" - Float moves the virtual text close to the content of the file. (default : "right_align")
       date_format = "%Y-%m-%d",
-      virtual_style = "float",
+      virtual_style = "right",
     },
   },
 }
