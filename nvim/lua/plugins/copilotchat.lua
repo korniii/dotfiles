@@ -39,7 +39,7 @@ return {
       { "<leader>ccd", "<cmd>CopilotChatDocs<cr>", mode = "v", desc = "CopilotChat - Toggle chat window" },
       { "<leader>cce", "<cmd>CopilotChatExplain<cr>", mode = "v", desc = "CopilotChat - Explain code" },
       { "<leader>cct", "<cmd>CopilotChatTests<cr>", mode = "v", desc = "CopilotChat - Generate tests" },
-      { "<leader>cco", "<cmd>CopilotChatOptimize<cr>", mode = "v", desc = "CopilotChat - Generate tests" },
+      { "<leader>cco", "<cmd>CopilotChatOptimize<cr>", mode = "v", desc = "CopilotChat - Optimize code" },
       { "<leader>ccC", "<cmd>CopilotChatCommit<cr>", mode = "n", desc = "CopilotChat - Commit message all" },
       { "<leader>ccS", "<cmd>CopilotChatCommitStaged<cr>", mode = "n", desc = "CopilotChat - Commit message staged" },
       {
