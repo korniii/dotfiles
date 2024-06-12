@@ -53,26 +53,6 @@ return {
     },
   },
   {
-    "aaronhallaert/advanced-git-search.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      local advanced = require("telescope").load_extension("advanced_git_search")
-
-      vim.api.nvim_create_user_command(
-        "DiffCommitLine",
-        "lua require('telescope').extensions.advanced_git_search.diff_commit_line()",
-        { range = true }
-      )
-
-      vim.api.nvim_set_keymap("v", "<leader>sc", ":DiffCommitLine<CR>", { noremap = true })
-
-      vim.keymap.set("n", "<leader>sc", advanced.search_log_content_file, { desc = "[S]earch current File [C]ommits" })
-      -- vim.keymap.set("n", "<leader>sC", builtin.git_commits, { desc = "[S]earch current Branch [C]ommits" })
-    end,
-  },
-  {
     "ruifm/gitlinker.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
