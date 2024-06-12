@@ -32,7 +32,10 @@ return {
       prepend_note_id = true,
     },
     open_app_foreground = true,
-    finder = "telescope.nvim",
+    finder = "fzf-lua",
+    picker = {
+      name = "fzf-lua",
+    },
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ["gf"] = {
