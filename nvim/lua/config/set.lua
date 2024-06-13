@@ -12,8 +12,8 @@ vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
 vim.opt.wrap = true
--- wait for nvim 0.10
--- vim.opt.smoothscroll = true
+vim.opt.breakindent = true
+vim.opt.smoothscroll = true
 
 vim.opt.shiftwidth = 2
 vim.bo.expandtab = true
