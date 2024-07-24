@@ -90,8 +90,6 @@ return {
         -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
         ["x"] = { char = "", hl_group = "ObsidianDone" },
-        [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-        ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
       },
       -- Use bullet marks for non-checkbox lists.
       bullets = { char = "•", hl_group = "ObsidianBullet" },
