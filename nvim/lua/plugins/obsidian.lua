@@ -8,6 +8,7 @@ return {
   lazy = true,
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/obsidian/korniii/**.md" },
   keys = {
+    { "<leader>o", "", desc = "+Obsidian" },
     { "<leader>fO", "<cmd>ObsidianSearch<cr>", desc = "[O]bsidian [S]earch" },
     { "<leader>fo", "<cmd>ObsidianQuickSwitch<cr>", desc = "[O]bsidian [F]ind File" },
     { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "[O]bsidian [O]pen" },
