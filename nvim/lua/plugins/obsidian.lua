@@ -87,14 +87,10 @@ return {
       enable = true, -- set to false to disable all additional syntax features
       update_debounce = 200, -- update delay after a text change (in milliseconds)
       -- Define how various check-boxes are displayed
-      checkboxes = {
-        -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-        ["x"] = { char = "", hl_group = "ObsidianDone" },
-      },
+      checkboxes = {},
       -- Use bullet marks for non-checkbox lists.
-      bullets = { char = "•", hl_group = "ObsidianBullet" },
-      external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+      bullets = {},
+      external_link_icon = {},
       -- Replace the above with this if you don't have a patched font:
       -- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
       reference_text = { hl_group = "ObsidianRefText" },

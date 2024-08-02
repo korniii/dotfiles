@@ -4,7 +4,7 @@ return {
   opts = {
     linters_by_ft = {
       bash = { "shellcheck" },
-      markdown = { "markdownlint", "vale" },
+      markdown = { "markdownlint-cli2", "vale" },
       terraform = { "tflint", "tfsec" },
     },
     linters = {
