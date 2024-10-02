@@ -13,7 +13,7 @@ return {
     { "<leader>fo", "<cmd>ObsidianQuickSwitch<cr>", desc = "[O]bsidian [F]ind File" },
     { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "[O]bsidian [O]pen" },
     { "<leader>ob", "<Cmd>ObsidianBacklinks<CR>", desc = "[O]bsidian [B]acklinks" },
-    { "<leader>on", ":ObsidianNew ", desc = "[O]bsidian [N]ew Note" },
+    { "<leader>on", ":ObsidianNewFromTemplate ", desc = "[O]bsidian [N]ew Note" },
     { "<leader>od", "<Cmd>ObsidianToday<CR>", desc = "[O]bsidian [D]aily Note" },
     { "<leader>ot", "<Cmd>ObsidianTomorrow<CR>", desc = "[O]bsidian [T]omorrows Note" },
     { "<leader>oy", "<Cmd>ObsidianYesterday<CR>", desc = "[O]bsidian [Y]esterdays Note" },
@@ -21,7 +21,7 @@ return {
   },
   opts = {
     dir = "~/notes/",
-    notes_subdir = "/inbox",
+    notes_subdir = "/6 - Atomic Notes",
     daily_notes = {
       folder = "dailies",
       date_format = "%Y-%m-%d",
@@ -37,7 +37,9 @@ return {
     picker = {
       name = "fzf-lua",
     },
-    disable_frontmatter = true,
+    templates = {
+      folder = "_templates",
+    },
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ["gf"] = {
@@ -61,6 +63,23 @@ return {
         opts = { buffer = true, expr = true },
       },
     },
+
+    -- Optional, alternatively you can customize the frontmatter data.
+    ---@return table
+    note_frontmatter_func = function(note)
+      local out = { tags = note.tags, aliases = note.aliases }
+
+      -- `note.metadata` contains any manually added fields in the frontmatter.
+      -- So here we just make sure those fields are kept in the frontmatter.
+      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+        for k, v in pairs(note.metadata) do
+          out[k] = v
+        end
+      end
+
+      return out
+    end,
+
     -- Optional, customize how note IDs are generated given an optional title.
     ---@param title string|?
     ---@return string
@@ -71,7 +90,7 @@ return {
       local suffix = ""
       if title ~= nil then
         -- If title is given, transform it into valid file name.
-        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        suffix = title:gsub("[^A-Za-z0-9 -]", ""):lower()
       else
         -- If title is nil, just add 4 random uppercase letters to the suffix and prepend the current timestamp.
         for _ = 1, 4 do
