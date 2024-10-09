@@ -1,5 +1,6 @@
-if test -f ~/.config/fish/proxy.fish
-    . ~/.config/fish/proxy.fish
+# Set TERM only if not inside Tmux
+if not set -q TMUX
+    set -gx TERM xterm-256color
 end
 
 fish_add_path ~/.config/scripts
