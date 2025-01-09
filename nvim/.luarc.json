@@ -73,5 +73,8 @@
         "/Users/okr7fe/.local/share/nvim/lazy/neoconf.nvim/types",
         "/Users/okr7fe/.local/share/nvim/lazy/neoconf.nvim/types/lua",
         "${3rd}/luv/library"
+    ],
+    "diagnostics.globals": [
+        "vim"
     ]
 }

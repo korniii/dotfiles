@@ -13,5 +13,6 @@ return {
 ]],
       },
     },
+    scroll = { enabled = false },
   },
 }
