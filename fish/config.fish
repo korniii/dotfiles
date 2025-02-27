@@ -7,12 +7,6 @@ end
 
 fish_add_path ~/.config/scripts
 
-# source fiels in folder if the folder exists
-if test -d ~/.config/fish/work
-    for file in ~/.config/fish/work/*.fish
-        source $file
-    end
-end
 
 bind \cf tmux-sessionizer
 
@@ -21,6 +15,13 @@ if status is-interactive
     fzf --fish | source
     atuin init fish | source
     starship init fish | source
+
+    # source fiels in folder if the folder exists
+    if test -d ~/.config/fish/work
+        for file in ~/.config/fish/work/*.fish
+            source $file
+        end
+    end
 end
 
 abbr -a ll "ls -la"
