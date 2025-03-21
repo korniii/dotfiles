@@ -20,10 +20,8 @@ return {
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     config = true,
     keys = {
-      -- { "<leader>gd", "<cmd>DiffviewOpen<cr>",  desc = "[G]it [D]iffView" },
-      -- { "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "[G]it [C]lose DiffView" },
       {
-        "<leader>gd",
+        "<leader>gdd",
         function()
           if next(require("diffview.lib").views) == nil then
             vim.cmd("DiffviewOpen")
@@ -31,10 +29,10 @@ return {
             vim.cmd("DiffviewClose")
           end
         end,
-        desc = "[G]it [D]iffView",
+        desc = "[G]it [D]iffView [Diff]",
       },
       {
-        "<leader>gh",
+        "<leader>gdh",
         function()
           vim.ui.input({ prompt = "Git Pickaxe (empty = full history)" }, function(query)
             if not query then
@@ -48,8 +46,9 @@ return {
             vim.cmd.wincmd("|") -- maximize
           end)
         end,
-        desc = "[G]it File [H]istory",
+        desc = "[G]it [D]iffView File [H]istory",
       },
+      { "<leader>gdm", "<cmd>DiffviewOpen origin/main...HEAD<cr>", desc = "[G]it [D]iffView origin/[m]ain" },
     },
   },
   {
