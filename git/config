@@ -1,0 +1,34 @@
+[branch]
+        sort = -committerdate
+[column]
+        ui = auto
+[commit]
+        verbose = true
+[core]
+        excludesfile = ~/.gitignore
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+[help]
+        autocorrect = prompt
+[init]
+        defaultBranch = main
+[push]
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
+[tag]
+        sort = version:refname
