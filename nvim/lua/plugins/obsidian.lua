@@ -1,9 +1,7 @@
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "hrsh7th/nvim-cmp",
-    "nvim-telescope/telescope.nvim",
   },
   lazy = true,
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/obsidian/korniii/**.md" },
@@ -27,13 +25,12 @@ return {
       date_format = "%Y-%m-%d",
     },
     completion = {
-      nvim_cmp = true,
+      nvim_cmp = false,
+      blink = true,
       min_chars = 2,
       new_notes_location = "current_dir",
-      prepend_note_id = true,
     },
     open_app_foreground = true,
-    finder = "fzf-lua",
     picker = {
       name = "fzf-lua",
     },
@@ -55,7 +52,7 @@ return {
         end,
         opts = { buffer = true },
       },
-      -- Smart action depending on context, either follow link or toggle checkbox.
+      -- Smart action depending on context: follow link, show notes with tag, or toggle checkbox.
       ["<cr>"] = {
         action = function()
           return require("obsidian").util.smart_action()
