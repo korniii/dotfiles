@@ -1,0 +1,11 @@
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 17.5
+font-thicken=true
+
+theme = Wez
+macos-titlebar-style = hidden
+
+background-opacity = 0.75
+background-blur = true
+
+mouse-hide-while-typing = true
