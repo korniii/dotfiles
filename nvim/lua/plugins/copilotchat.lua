@@ -5,17 +5,18 @@ return {
     branch = "tools",
     build = "make tiktoken",
     opts = {
+      model = "claude-sonnet-4",
       prompts = {
         Grammar = {
           prompt = "Fix grammar and typos of the text.",
         },
       },
     },
-    config = function()
+    config = function(_, opts)
       local chat = require("CopilotChat")
       local mcp = require("mcphub")
 
-      chat.setup()
+      chat.setup(opts)
 
       local function handle_event()
         print("MCP events triggered")
