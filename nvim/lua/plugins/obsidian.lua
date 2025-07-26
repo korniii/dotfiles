@@ -61,40 +61,16 @@ return {
     },
     callbacks = {
       enter_note = function(_, note)
-        vim.keymap.set("n", "<leader>ch", "<cmd>Obsidian toggle_checkbox<cr>", {
-          buffer = note.bufnr,
-          desc = "Toggle checkbox",
-        })
+        -- vim.keymap.set("n", "<leader>ch", "<cmd>Obsidian toggle_checkbox<cr>", {
+        --   buffer = note.bufnr,
+        --   desc = "Toggle checkbox",
+        -- })
         vim.keymap.set("n", "gf", "<cmd>Obsidian follow_link<cr>", {
           buffer = note.bufnr,
-          desc = "Toggle checkbox",
+          desc = "follow link",
         })
       end,
     },
-    -- mappings = {
-    --   -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-    --   ["gf"] = {
-    --     action = function()
-    --       return require("obsidian").util.gf_passthrough()
-    --     end,
-    --     opts = { noremap = false, expr = true, buffer = true },
-    --   },
-    --   -- Toggle check-boxes.
-    --   ["<leader>ch"] = {
-    --     action = function()
-    --       return require("obsidian").util.toggle_checkbox()
-    --     end,
-    --     opts = { buffer = true },
-    --   },
-    --   -- Smart action depending on context: follow link, show notes with tag, or toggle checkbox.
-    --   ["<cr>"] = {
-    --     action = function()
-    --       return require("obsidian").util.smart_action()
-    --     end,
-    --     opts = { buffer = true, expr = true },
-    --   },
-    -- },
-
     -- Optional, alternatively you can customize the frontmatter data.
     ---@return table
     note_frontmatter_func = function(note)
@@ -131,6 +107,10 @@ return {
       end
       return suffix
     end,
+
+    checkbox = {
+      order = { " ", "x" },
+    },
 
     -- Optional, configure additional syntax highlighting / extmarks.
     -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
