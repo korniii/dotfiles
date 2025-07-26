@@ -7,19 +7,37 @@ return {
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/obsidian/korniii/**.md" },
   keys = {
     { "<leader>o", "", desc = "+Obsidian" },
-    { "<leader>fO", "<cmd>ObsidianSearch<cr>", desc = "[O]bsidian [S]earch" },
-    { "<leader>fo", "<cmd>ObsidianQuickSwitch<cr>", desc = "[O]bsidian [F]ind File" },
-    { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "[O]bsidian [O]pen" },
-    { "<leader>ob", "<Cmd>ObsidianBacklinks<CR>", desc = "[O]bsidian [B]acklinks" },
-    { "<leader>on", ":ObsidianNewFromTemplate ", desc = "[O]bsidian [N]ew Note" },
-    { "<leader>od", "<Cmd>ObsidianToday<CR>", desc = "[O]bsidian [D]aily Note" },
-    { "<leader>ot", "<Cmd>ObsidianTomorrow<CR>", desc = "[O]bsidian [T]omorrows Note" },
-    { "<leader>oy", "<Cmd>ObsidianYesterday<CR>", desc = "[O]bsidian [Y]esterdays Note" },
-    { "<leader>or", "<Cmd>ObsidianRename<CR>", desc = "[O]bsidian [R]ename Note" },
+    { "<leader>fO", "<cmd>Obsidian search<cr>", desc = "[O]bsidian [S]earch" },
+    { "<leader>fo", "<cmd>Obsidian quick_switch<cr>", desc = "[O]bsidian [F]ind File" },
+    { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "[O]bsidian [O]pen" },
+    { "<leader>ob", "<Cmd>Obsidian backlinks<CR>", desc = "[O]bsidian [B]acklinks" },
+    {
+      "<leader>on",
+      function()
+        vim.ui.input({ prompt = "New note name: " }, function(input)
+          if input and input ~= "" then
+            local cmd = string.format("Obsidian new_from_template %s %s", input, "AtomicNote")
+            vim.cmd(cmd)
+          end
+        end)
+      end,
+      desc = "[O]bsidian [N]ew Note",
+    },
+    { "<leader>od", "<Cmd>Obsidian today<CR>", desc = "[O]bsidian [D]aily Note" },
+    { "<leader>ot", "<Cmd>Obsidian tomorrow<CR>", desc = "[O]bsidian [T]omorrows Note" },
+    { "<leader>oy", "<Cmd>Obsidian yesterday<CR>", desc = "[O]bsidian [Y]esterdays Note" },
+    { "<leader>or", "<Cmd>Obsidian rename<CR>", desc = "[O]bsidian [R]ename Note" },
   },
   opts = {
-    dir = "~/notes/",
-    notes_subdir = "/6 - Atomic Notes",
+    workspaces = {
+      {
+        name = "korniii",
+        path = "~/notes",
+        overrides = {
+          notes_subdir = "6 - Atomic Notes",
+        },
+      },
+    },
     daily_notes = {
       folder = "dailies",
       date_format = "%Y-%m-%d",
@@ -28,38 +46,54 @@ return {
       nvim_cmp = false,
       blink = true,
       min_chars = 2,
-      new_notes_location = "current_dir",
     },
-    open_app_foreground = true,
+    new_notes_location = "current_dir",
+    open = {
+      func = function(uri)
+        vim.ui.open(uri, { cmd = { "open", "-a", "/Applications/Obsidian.app" } })
+      end,
+    },
     picker = {
       name = "fzf-lua",
     },
     templates = {
       folder = "_templates",
     },
-    mappings = {
-      -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-      ["gf"] = {
-        action = function()
-          return require("obsidian").util.gf_passthrough()
-        end,
-        opts = { noremap = false, expr = true, buffer = true },
-      },
-      -- Toggle check-boxes.
-      ["<leader>ch"] = {
-        action = function()
-          return require("obsidian").util.toggle_checkbox()
-        end,
-        opts = { buffer = true },
-      },
-      -- Smart action depending on context: follow link, show notes with tag, or toggle checkbox.
-      ["<cr>"] = {
-        action = function()
-          return require("obsidian").util.smart_action()
-        end,
-        opts = { buffer = true, expr = true },
-      },
+    callbacks = {
+      enter_note = function(_, note)
+        vim.keymap.set("n", "<leader>ch", "<cmd>Obsidian toggle_checkbox<cr>", {
+          buffer = note.bufnr,
+          desc = "Toggle checkbox",
+        })
+        vim.keymap.set("n", "gf", "<cmd>Obsidian follow_link<cr>", {
+          buffer = note.bufnr,
+          desc = "Toggle checkbox",
+        })
+      end,
     },
+    -- mappings = {
+    --   -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+    --   ["gf"] = {
+    --     action = function()
+    --       return require("obsidian").util.gf_passthrough()
+    --     end,
+    --     opts = { noremap = false, expr = true, buffer = true },
+    --   },
+    --   -- Toggle check-boxes.
+    --   ["<leader>ch"] = {
+    --     action = function()
+    --       return require("obsidian").util.toggle_checkbox()
+    --     end,
+    --     opts = { buffer = true },
+    --   },
+    --   -- Smart action depending on context: follow link, show notes with tag, or toggle checkbox.
+    --   ["<cr>"] = {
+    --     action = function()
+    --       return require("obsidian").util.smart_action()
+    --     end,
+    --     opts = { buffer = true, expr = true },
+    --   },
+    -- },
 
     -- Optional, alternatively you can customize the frontmatter data.
     ---@return table
