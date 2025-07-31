@@ -1,8 +1,6 @@
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    url = "https://github.com/deathbeam/CopilotChat.nvim",
-    branch = "tools",
     build = "make tiktoken",
     opts = {
       model = "claude-sonnet-4",
