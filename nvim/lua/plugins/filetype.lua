@@ -16,6 +16,7 @@ return {
         [".*/templates/.*%.yaml"] = "helm",
         [".*/templates/.*%.tpl"] = "helm",
         ["helmfile.yaml"] = "helm",
+        [".vscode/.*%.json"] = "jsonc",
       },
       shebang = {
         dash = "sh",
