@@ -7,7 +7,6 @@ end
 
 fish_add_path ~/.config/scripts
 
-
 bind \cf tmux-sessionizer
 
 if status is-interactive
@@ -27,7 +26,7 @@ end
 abbr -a ll "ls -la"
 abbr v nvim
 abbr g lazygit
-abbr k kubectl
+abbr k kubecolor
 abbr kk k9s
 
 abbr tf terraform
