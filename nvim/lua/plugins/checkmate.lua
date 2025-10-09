@@ -5,9 +5,13 @@ return {
     files = {
       "*.md",
     },
-    todo_markers = {
-      unchecked = "[ ]",
-      checked = "[x]",
+    todo_states = {
+      checked = {
+        marker = "☒", -- how it appears in Neovim
+      },
+      unchecked = {
+        marker = "☐", -- how it appears in Neovim
+      },
     },
     metadata = {
       in_progress = {
