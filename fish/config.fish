@@ -42,7 +42,7 @@ if type -q eza
 else
     abbr -a l ls
     abbr -a ll "ls -l"
-    abbr -a lll "ls -la"
+    abbr -a lll "ls -lah"
 end
 
 if type -q bat
