@@ -26,8 +26,21 @@ end
 abbr -a ll "ls -la"
 abbr v nvim
 abbr g lazygit
-abbr k kubecolor
+
 abbr kk k9s
+abbr kns kubens
+abbr kctx kubectx
+
+if type -q kubecolor
+    abbr k kubecolor
+
+    # Wrap kubecolor so it inherits kubectl completions
+    function kubecolor --wraps kubectl
+        command kubecolor $argv
+    end
+else
+    abbr k kubectl
+end
 
 abbr tf terraform
 abbr tfi "terraform init"
