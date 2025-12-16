@@ -13,43 +13,52 @@ return {
     },
   },
   {
-    "sindrets/diffview.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-    config = true,
-    keys = {
-      {
-        "<leader>gdd",
-        function()
-          if next(require("diffview.lib").views) == nil then
-            vim.cmd("DiffviewOpen")
-          else
-            vim.cmd("DiffviewClose")
-          end
-        end,
-        desc = "[G]it [D]iffView [Diff]",
-      },
-      {
-        "<leader>gdh",
-        function()
-          vim.ui.input({ prompt = "Git Pickaxe (empty = full history)" }, function(query)
-            if not query then
-              return
-            end
-            if query ~= "" then
-              query = string.format(" -G'%s'", query)
-            end
-            vim.cmd("DiffviewFileHistory %" .. query)
-            vim.cmd.wincmd("w") -- go directly to file window
-            vim.cmd.wincmd("|") -- maximize
-          end)
-        end,
-        desc = "[G]it [D]iffView File [H]istory",
-      },
-      { "<leader>gdm", "<cmd>DiffviewOpen origin/main...HEAD<cr>", desc = "[G]it [D]iffView origin/[m]ain" },
-    },
+    "esmuellert/vscode-diff.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    branch = "next",
+    cmd = "CodeDiff",
+    config = function()
+      require("vscode-diff").setup({
+        -- Highlight configuration
+        highlights = {
+          -- Line-level: accepts highlight group names or hex colors (e.g., "#2ea043")
+          line_insert = "DiffAdd", -- Line-level insertions
+          line_delete = "DiffDelete", -- Line-level deletions
+
+          -- Character-level: accepts highlight group names or hex colors
+          -- If specified, these override char_brightness calculation
+          char_insert = nil, -- Character-level insertions (nil = auto-derive)
+          char_delete = nil, -- Character-level deletions (nil = auto-derive)
+
+          -- Brightness multiplier (only used when char_insert/char_delete are nil)
+          -- nil = auto-detect based on background (1.4 for dark, 0.92 for light)
+          char_brightness = nil, -- Auto-adjust based on your colorscheme
+        },
+
+        -- Diff view behavior
+        diff = {
+          disable_inlay_hints = true, -- Disable inlay hints in diff windows for cleaner view
+          max_computation_time_ms = 5000, -- Maximum time for diff computation (VSCode default)
+        },
+
+        -- Keymaps in diff view
+        keymaps = {
+          view = {
+            quit = "q", -- Close diff tab
+            toggle_explorer = "<leader>b", -- Toggle explorer visibility (explorer mode only)
+            next_hunk = "]c", -- Jump to next change
+            prev_hunk = "[c", -- Jump to previous change
+            next_file = "]f", -- Next file in explorer mode
+            prev_file = "[f", -- Previous file in explorer mode
+          },
+          explorer = {
+            select = "<CR>", -- Open diff for selected file
+            hover = "K", -- Show file diff preview
+            refresh = "R", -- Refresh git status
+          },
+        },
+      })
+    end,
   },
   {
     "ruifm/gitlinker.nvim",
