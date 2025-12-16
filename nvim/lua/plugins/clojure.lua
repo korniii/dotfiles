@@ -1,5 +1,4 @@
 return {
-
   { "PaterJason/nvim-treesitter-sexp", enabled = false },
   {
     "julienvincent/nvim-paredit",
