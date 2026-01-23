@@ -13,9 +13,11 @@ return {
     },
   },
   {
-    "esmuellert/vscode-diff.nvim",
+    "esmuellert/codediff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
-    branch = "next",
+    keys = {
+      { "<leader>gd", ":CodeDiff ", desc = "[G]it [D]iff" },
+    },
     cmd = "CodeDiff",
     config = function()
       require("vscode-diff").setup({
