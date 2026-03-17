@@ -5,6 +5,8 @@ if not set -q TMUX
     set -gx TERM xterm-256color
 end
 
+set -x EDITOR nvim
+
 fish_add_path ~/.config/scripts
 
 bind \cf tmux-sessionizer
